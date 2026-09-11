@@ -10,7 +10,7 @@ from tests.test_gastos import RepositorioFalso
 USUARIO_DE_PRUEBA = Usuario(id=1, email="test@ejemplo.com", hashed_password="no-importa")
 
 
-@pytest.fixture
+@pytest.fixture(scope="module")
 def client():
     app.dependency_overrides[get_db] = lambda: None
     app.dependency_overrides[get_current_user] = lambda: USUARIO_DE_PRUEBA
